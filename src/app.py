@@ -1,6 +1,7 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from english.generator import generate_sentence, generate_word
 app = Flask(__name__)
+# app = Flask(__name__, static_folder='src/static')
 
 # Sample data for testing
 books = [
@@ -8,6 +9,13 @@ books = [
     {'id': 2, 'title': 'Flask Web Development', 'author': 'Jane Doe'},
     {'id': 3, 'title': 'Data Science with Python', 'author': 'Alice Brown'}
 ]
+
+# Basic Html page
+@app.route('/')
+def index():
+    # return render_template('index.html')
+    return render_template('index.html')
+
 
 # English based services
 @app.route('/sentence', methods=['GET'])
